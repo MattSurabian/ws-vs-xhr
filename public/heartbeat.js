@@ -6,16 +6,6 @@ if( !navigator.getBattery) {
 
 var TEST_ID = Math.random().toString(36).substr(2, 15);
 
-var batteryEl = document.createElement("div");
-batteryEl.setAttribute('class', 'battery');
-document.body.appendChild(batteryEl);
-
-var chargeWarningEl = document.createElement('div');
-document.body.appendChild(chargeWarningEl);
-
-var statusEl = document.createElement('div');
-document.body.appendChild(statusEl);
-
 navigator.getBattery().then(function(battery) {
 
   setBatteryLevel(battery.level * 100);
@@ -38,11 +28,13 @@ navigator.getBattery().then(function(battery) {
 });
 
 var setTestStatus = function(status) {
-  statusEl.innerHTML = status;
+  document.querySelector('.test-status').innerHTML = status;
 };
 
 var setBatteryChargeState = function(chargeState) {
-  if (chargeState === "true") {
+  var batteryEl = document.querySelector('.battery');
+  var chargeWarningEl = document.querySelector('.charge-warning');
+  if (chargeState) {
     chargeWarningEl.innerHTML = 'It seems like your device is charging, please unplug it.';
   } else {
     chargeWarningEl.innerHTML = '';
@@ -51,11 +43,13 @@ var setBatteryChargeState = function(chargeState) {
 };
 
 var setBatteryLevel = function (level) {
+  var batteryEl = document.querySelector('.battery');
   batteryEl.setAttribute('data-battery-level', level.toFixed(2));
   batteryEl.innerHTML = 'Battery Level: ' + level.toFixed(2);
 };
 
 var getBatteryLevel = function () {
+  var batteryEl = document.querySelector('.battery');
   if (batteryEl.getAttribute('data-battery-charging') === "true") {
     return 'CHARGING';
   } else {
@@ -69,8 +63,8 @@ var getPulse = function () {
     connection: TEST_MODE,
     id: TEST_ID,
     data: {
-      status: 'IN_GAME',
-      score: Math.random() * 50000,
+      status: 'IN_TEST',
+      score: Math.random() * 500000,
       battery: getBatteryLevel(),
       userAgent: navigator.userAgent
     }

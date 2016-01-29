@@ -19,25 +19,25 @@
 </head>
 <body>
 <h1>WebSockets vs XHR Showdown</h1><br>
-<section class="test-links centered">
-  The purpose of this website is to collect data that illustrates how different methods of data transfer effect
-  a device's battery overtime. <a href="https://github.com/MattSurabian/ws-vs-xhr" target="_blank">The code powering this site is open source, free, and available on GitHub.</a>.
+<div class="test-links centered">
+  I'm trying to collect data comparing the battery drain of XHR long polling vs web sockets.
+  <a href="https://github.com/MattSurabian/ws-vs-xhr" target="_blank">The code powering this site is open source, free, and available on GitHub.</a>.
   <br><br>
-  If you'd like to help in the data collection effort visit one of the pages below, preferably while connected to a mobile network and not WiFi. Please only participate in one test at a time.
+  If you'd like to help in the data collection effort: <em>visit one of the pages below, preferably while connected to a mobile network and not WiFi.</em> Please only participate in one test at a time.
   <br><br>
   <a href="xhr.html">XHR Test</a><br>
   <a href="ws.html">WebSockets Test</a>
-</section>
+</div>
 
-<section class="unsupported-message">
-  <h2>Thanks for trying!</h2>
-  Your device and/or browser doesn't support the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API">Battery Status API</a>, and can't participate in this test.
+<div class="unsupported-message">
+  <h2>Thanks!</h2>
+  Unfortunately your device and/or browser doesn't support the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API">Battery Status API</a>, and can't participate in this test.
   For more information about this website, checkout <a href="https://github.com/MattSurabian/ws-vs-xhr">this project's Github page</a>.
-</section>
+</div>
 
-<section class="results centered">
+<div class="results centered">
   <!-- TODO: Show Realtime Results -->
-</section>
+</div>
 
 <script>
   // Display the unsupported message if the user's browsing context doesn't support the Battery Status API

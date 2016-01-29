@@ -11,18 +11,24 @@
       margin: 0 auto;
       width:50%;
     }
+    .charge-warning {
+      font-style: italic;
+    }
   </style>
   <script src="heroku_https.js" type="text/javascript"></script>
 </head>
 <body>
-<section class="test centered">
+<div class="test centered">
   <h1>Web Sockets Battery Drain Test</h1>
   <strong>Thanks for participating in the web sockets test! Please leave this page in focus for 15-30 minutes, preferably while connected to a mobile network.</strong>
   <br><br>
-  This web page will send a small object that reports this device's battery level over a web socket connection every 30 seconds for as long as
+  This web page will send a <a href="https://github.com/MattSurabian/ws-vs-xhr/blob/master/public/heartbeat.js#L67-L77" target="_blank">small object</a> that reports this device's battery level over a web socket connection every 30 seconds for as long as
   the server continues to acknowledge them. For more information about this site go to the <a href="/">start page</a>.
   <br><br>
-</section>
+  <div class="battery"></div>
+  <div class="charge-warning"></div>
+  <div class="test-status"></div>
+</div>
 
 <script src="heartbeat.js"></script>
 <script>
