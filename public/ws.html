@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Web Sockets vs Ad Hoc HTTP</title>
+  <style>
+    body {
+      text-align: center;
+    }
+    .test {
+      width:50%;
+      margin: 0 auto;
+    }
+  </style>
+  <script src="heroku_https.js" type="text/javascript"></script>
+</head>
+<body>
+<section class="test">
+  <h1>Web Sockets Battery Drain Test</h1>
+  <strong>Thanks for participating in the web sockets test! Please leave this page in focus for 15-30 minutes, preferably while connected to a mobile network.</strong>
+  <br><br>
+  This web page will send a small object that reports this device's battery level over a web socket connection every 30 seconds for as long as
+  the server continues to acknowledge them. For more information about this site go to the <a href="/">start page</a>.
+  <br><br>
+</section>
+
+<script src="heartbeat.js"></script>
+<script>
+  var TEST_MODE = 'WS';
+</script>
+
+</body>
+</html>

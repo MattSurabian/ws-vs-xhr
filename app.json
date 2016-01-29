@@ -1,0 +1,12 @@
+{
+  "name": "ws-vs-xhr",
+  "description": "Node.js WebSockets vs XHR Showdown: A NodeJS server/client that compares the battery consumption of two different methods of data transfer",
+  "repository": "https://github.com/MattSurabian/ws-vs-xhr",
+  "addons": ["heroku-postgresql:hobby-dev"],
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "express", "websockets"],
+  "image": "heroku/nodejs",
+  "scripts": {
+    "postdeploy": "node db_setup.js"
+  }
+}

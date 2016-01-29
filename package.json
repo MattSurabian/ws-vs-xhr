@@ -1,0 +1,29 @@
+{
+  "name": "ws-vs-xhr",
+  "version": "1.0.0",
+  "repository": "https://github.com/MattSurabian/ws-vs-xhr",
+  "description": "Repo to test the difference in battery consumption between secure web sockets and XMLHttpRequests",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "secure",
+    "web",
+    "sockets",
+    "https",
+    "xhr",
+    "wss",
+    "battery",
+    "api",
+    "polling"
+  ],
+  "author": "Matt Surabian <matt@mattsurabian.com> (https://mattsurabian.github.io)",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4",
+    "pg": "4.4.3",
+    "ws": "^1.0.1"
+  }
+}

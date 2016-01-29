@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Web Sockets vs XHR Showdown</title>
+  <style>
+    body{
+      text-align: center;
+    }
+    .test-links {
+      margin: 0 auto;
+      width:50%;
+    }
+    .unsupported-message {
+      display: none;
+    }
+  </style>
+  <script src="heroku_https.js" type="text/javascript"></script>
+</head>
+<body>
+
+<section class="test-links">
+  <h2>WebSockets vs XHR Showdown</h2><br>
+  The purpose of this website is to collect data that illustrates how different methods of data transfer effect
+  a device's battery overtime. <a href="https://github.com/MattSurabian/ws-vs-xhr" target="_blank">The code powering this site is open source, free, and available on GitHub.</a>.
+  <br><br>
+  If you'd like to help in the data collection effort visit one of the pages below, preferably while connected to a mobile network and not WiFi. Please only participate in one test at a time.
+  <br><br>
+  <a href="xhr.html">XHR Test</a><br>
+  <a href="ws.html">WebSockets Test</a>
+</section>
+
+<section class="unsupported-message">
+  <h2>Thanks for trying!</h2>
+  Your device and/or browser doesn't support the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API">Battery Status API</a>, and can't participate in this test.
+</section>
+
+<section class="results">
+  <!-- TODO: Show Realtime Results -->
+</section>
+
+<script>
+  // Display the unsupported message if the user's browsing context doesn't support the Battery Status API
+  if( !navigator.getBattery) {
+    document.body.removeChild(document.querySelector('.test-links'));
+    document.querySelector('.unsupported-message').className = "";
+  }
+</script>
+</body>
+</html>
