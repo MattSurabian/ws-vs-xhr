@@ -5,8 +5,9 @@
   <style>
     body{
       text-align: center;
+      font-size: 16px;
     }
-    .test-links {
+    .centered {
       margin: 0 auto;
       width:50%;
     }
@@ -17,9 +18,8 @@
   <script src="heroku_https.js" type="text/javascript"></script>
 </head>
 <body>
-
-<section class="test-links">
-  <h2>WebSockets vs XHR Showdown</h2><br>
+<h1>WebSockets vs XHR Showdown</h1><br>
+<section class="test-links centered">
   The purpose of this website is to collect data that illustrates how different methods of data transfer effect
   a device's battery overtime. <a href="https://github.com/MattSurabian/ws-vs-xhr" target="_blank">The code powering this site is open source, free, and available on GitHub.</a>.
   <br><br>
@@ -32,9 +32,10 @@
 <section class="unsupported-message">
   <h2>Thanks for trying!</h2>
   Your device and/or browser doesn't support the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API">Battery Status API</a>, and can't participate in this test.
+  For more information about this website, checkout <a href="https://github.com/MattSurabian/ws-vs-xhr">this project's Github page</a>.
 </section>
 
-<section class="results">
+<section class="results centered">
   <!-- TODO: Show Realtime Results -->
 </section>
 
@@ -42,7 +43,7 @@
   // Display the unsupported message if the user's browsing context doesn't support the Battery Status API
   if( !navigator.getBattery) {
     document.body.removeChild(document.querySelector('.test-links'));
-    document.querySelector('.unsupported-message').className = "";
+    document.querySelector('.unsupported-message').className = ".centered";
   }
 </script>
 </body>
