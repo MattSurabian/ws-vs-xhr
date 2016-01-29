@@ -35,26 +35,30 @@ var setBatteryChargeState = function(chargeState) {
   var batteryEl = document.querySelector('.battery');
   var chargeWarningEl = document.querySelector('.charge-warning');
   if (chargeState) {
-    chargeWarningEl.innerHTML = 'It seems like your device is charging, please unplug it.';
+    chargeWarningEl.innerHTML = 'It seems like your device is charging, please unplug it and reload this page.';
+    setTestStatus('<strong>Test Cancelled</strong>');
   } else {
     chargeWarningEl.innerHTML = '';
   }
   batteryEl.setAttribute('data-battery-charging', chargeState);
 };
 
+var isBatteryCharging = function() {
+  return document.querySelector('.battery').getAttribute('data-battery-charging') === 'true';
+};
+
 var setBatteryLevel = function (level) {
   var batteryEl = document.querySelector('.battery');
   batteryEl.setAttribute('data-battery-level', level.toFixed(2));
-  batteryEl.innerHTML = 'Battery Level: ' + level.toFixed(2);
+  if (isBatteryCharging()) {
+    batteryEl.innerHTML = 'Charging';
+  } else {
+    batteryEl.innerHTML = 'Battery Level: ' + level.toFixed(2);
+  }
 };
 
 var getBatteryLevel = function () {
-  var batteryEl = document.querySelector('.battery');
-  if (batteryEl.getAttribute('data-battery-charging') === "true") {
-    return 'CHARGING';
-  } else {
-    return batteryEl.getAttribute('data-battery-level');
-  }
+  return document.querySelector('.battery').getAttribute('data-battery-level');
 };
 
 var getPulse = function () {
@@ -74,6 +78,9 @@ var getPulse = function () {
 };
 
 var XHRTest = function() {
+  if (isBatteryCharging()) {
+    return;
+  }
   var request = new XMLHttpRequest();
   request.open('POST', '/api/heartbeat', true);
   request.setRequestHeader('Content-Type', 'application/json');
@@ -97,6 +104,9 @@ var XHRTest = function() {
 };
 
 var WebSocketTest = function() {
+  if (isBatteryCharging()) {
+    return;
+  }
   var host = location.origin.replace(/^http/, 'ws');
   var ws = new WebSocket(host);
 
@@ -118,7 +128,7 @@ var WebSocketTest = function() {
   };
 
   ws.onerror = function() {
-    setTestStatus('<strong>The test has encountered a problem</strong>')
+    setTestStatus('<strong>The test has encountered a problem</strong>');
   };
 
 };

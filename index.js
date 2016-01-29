@@ -15,11 +15,10 @@ app.post('/api/heartbeat', function(req, res) {
   // Only persist packets that pass validation
   if(isPacketValid(req.body)) {
     persistTestData(req.body);
+    res.send(JSON.stringify({
+      type: 'heartbeat.ACK'
+    }));
   }
-  res.send(JSON.stringify({
-    type: 'heartbeat.ACK'
-  }));
-
 });
 
 var server = http.createServer(app);
@@ -34,16 +33,15 @@ wss.on('connection', function connection(ws) {
     // Only persist packets that pass validation
     if (isPacketValid(packet)) {
       persistTestData(packet);
+      ws.send(JSON.stringify({
+        type: 'heartbeat.ACK'
+      }));
     }
-    ws.send(JSON.stringify({
-      type: 'heartbeat.ACK'
-    }));
-
   });
 });
 
 function isPacketValid(packet) {
-  return packet.type === 'heartbeat' && packet.data.battery !== 'CHARGING';
+  return packet.type === 'heartbeat';
 }
 
 function persistTestData(packet) {
